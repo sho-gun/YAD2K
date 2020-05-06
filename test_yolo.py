@@ -116,8 +116,11 @@ def _main(args):
 
     for image_file in os.listdir(test_path):
         try:
-            image_type = imghdr.what(os.path.join(test_path, image_file))
-            if not image_type:
+#            image_type = imghdr.what(os.path.join(test_path, image_file))
+#            if not image_type:
+#                continue
+            _, ext = os.path.splitext(image_file)
+            if ext not in ['.jpg', '.png', '.gif']:
                 continue
         except IsADirectoryError:
             continue
